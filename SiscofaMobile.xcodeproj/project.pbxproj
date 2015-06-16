@@ -7,13 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA19B7D31B292AF100A04289 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19B7D21B292AF100A04289 /* LoginVC.swift */; };
+		DA5BEA471B29466B00B9C1C0 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA3F1B29466B00B9C1C0 /* Network.m */; };
+		DA5BEA551B29468600B9C1C0 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA4D1B29468600B9C1C0 /* Base64.m */; };
+		DA5BEA561B29468600B9C1C0 /* Criptografia.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA4F1B29468600B9C1C0 /* Criptografia.m */; };
+		DA5BEA571B29468600B9C1C0 /* InfoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA511B29468600B9C1C0 /* InfoApp.m */; };
+		DA5BEA581B29468600B9C1C0 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA531B29468600B9C1C0 /* SVProgressHUD.m */; };
+		DA5BEA5A1B2946BF00B9C1C0 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA591B2946BF00B9C1C0 /* JSONHelper.swift */; };
+		DA5BEA5C1B294ADE00B9C1C0 /* CadastroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA5B1B294ADE00B9C1C0 /* CadastroVC.swift */; };
 		DA5D2B641B24F54400E8037B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D2B631B24F54400E8037B /* AppDelegate.swift */; };
 		DA5D2B671B24F54400E8037B /* SiscofaMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA5D2B651B24F54400E8037B /* SiscofaMobile.xcdatamodeld */; };
 		DA5D2B691B24F54400E8037B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D2B681B24F54400E8037B /* ViewController.swift */; };
-		DA5D2B6C1B24F54400E8037B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA5D2B6A1B24F54400E8037B /* Main.storyboard */; };
 		DA5D2B6E1B24F54400E8037B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA5D2B6D1B24F54400E8037B /* Images.xcassets */; };
 		DA5D2B711B24F54400E8037B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5D2B6F1B24F54400E8037B /* LaunchScreen.xib */; };
 		DA5D2B7D1B24F54500E8037B /* SiscofaMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D2B7C1B24F54500E8037B /* SiscofaMobileTests.swift */; };
+		DA5D2B871B24FA0B00E8037B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D2B861B24FA0B00E8037B /* libsqlite3.dylib */; };
+		DA5D2B891B24FA3400E8037B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D2B881B24FA3400E8037B /* UIKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DA5D2B8B1B24FA4000E8037B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D2B8A1B24FA4000E8037B /* CoreGraphics.framework */; };
+		DA5D2B8D1B24FA4700E8037B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D2B8C1B24FA4700E8037B /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DA5D2B991B2500EC00E8037B /* ManterFazendaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D2B981B2500EC00E8037B /* ManterFazendaVC.swift */; };
+		DA5D2B9C1B2508C000E8037B /* fazenda.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D2B9B1B2508C000E8037B /* fazenda.png */; };
+		DA5D2B9E1B250B9F00E8037B /* boi.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D2B9D1B250B9F00E8037B /* boi.png */; };
+		DAA996FB1B2E768F00BF27B1 /* Configuracao.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA996FA1B2E768F00BF27B1 /* Configuracao.swift */; };
+		DAA996FD1B2F984000BF27B1 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA996FC1B2F984000BF27B1 /* NetworkHelper.swift */; };
+		DAA997001B2FA29400BF27B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAA996FE1B2FA29400BF27B1 /* Main.storyboard */; };
+		DAA997021B2FA83600BF27B1 /* TabBarHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA997011B2FA83600BF27B1 /* TabBarHomeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +45,41 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA19B7D21B292AF100A04289 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		DA5BEA3E1B29466B00B9C1C0 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
+		DA5BEA3F1B29466B00B9C1C0 /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
+		DA5BEA4C1B29468600B9C1C0 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		DA5BEA4D1B29468600B9C1C0 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		DA5BEA4E1B29468600B9C1C0 /* Criptografia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Criptografia.h; sourceTree = "<group>"; };
+		DA5BEA4F1B29468600B9C1C0 /* Criptografia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Criptografia.m; sourceTree = "<group>"; };
+		DA5BEA501B29468600B9C1C0 /* InfoApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoApp.h; sourceTree = "<group>"; };
+		DA5BEA511B29468600B9C1C0 /* InfoApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoApp.m; sourceTree = "<group>"; };
+		DA5BEA521B29468600B9C1C0 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		DA5BEA531B29468600B9C1C0 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		DA5BEA591B2946BF00B9C1C0 /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
+		DA5BEA5B1B294ADE00B9C1C0 /* CadastroVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroVC.swift; sourceTree = "<group>"; };
 		DA5D2B5E1B24F54400E8037B /* SiscofaMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiscofaMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5D2B621B24F54400E8037B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA5D2B631B24F54400E8037B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA5D2B661B24F54400E8037B /* SiscofaMobile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SiscofaMobile.xcdatamodel; sourceTree = "<group>"; };
 		DA5D2B681B24F54400E8037B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DA5D2B6B1B24F54400E8037B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA5D2B6D1B24F54400E8037B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DA5D2B701B24F54400E8037B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		DA5D2B761B24F54500E8037B /* SiscofaMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiscofaMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5D2B7B1B24F54500E8037B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA5D2B7C1B24F54500E8037B /* SiscofaMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiscofaMobileTests.swift; sourceTree = "<group>"; };
+		DA5D2B861B24FA0B00E8037B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		DA5D2B881B24FA3400E8037B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DA5D2B8A1B24FA4000E8037B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DA5D2B8C1B24FA4700E8037B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DA5D2B981B2500EC00E8037B /* ManterFazendaVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManterFazendaVC.swift; sourceTree = "<group>"; };
+		DA5D2B9B1B2508C000E8037B /* fazenda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fazenda.png; sourceTree = "<group>"; };
+		DA5D2B9D1B250B9F00E8037B /* boi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boi.png; sourceTree = "<group>"; };
+		DAA996FA1B2E768F00BF27B1 /* Configuracao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuracao.swift; sourceTree = "<group>"; };
+		DAA996FC1B2F984000BF27B1 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		DAA996FF1B2FA29400BF27B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DAA997011B2FA83600BF27B1 /* TabBarHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarHomeController.swift; sourceTree = "<group>"; };
+		DAA997031B2FAEFE00BF27B1 /* libCTWakeCommandParserDynamic.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libCTWakeCommandParserDynamic.dylib; path = usr/lib/libCTWakeCommandParserDynamic.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +87,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA5D2B8D1B24FA4700E8037B /* Foundation.framework in Frameworks */,
+				DA5D2B8B1B24FA4000E8037B /* CoreGraphics.framework in Frameworks */,
+				DA5D2B891B24FA3400E8037B /* UIKit.framework in Frameworks */,
+				DA5D2B871B24FA0B00E8037B /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,9 +104,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA5BEA331B29463F00B9C1C0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DA5BEA491B29467C00B9C1C0 /* Lib */,
+				DA5BEA3E1B29466B00B9C1C0 /* Network.h */,
+				DA5BEA3F1B29466B00B9C1C0 /* Network.m */,
+				DA5BEA591B2946BF00B9C1C0 /* JSONHelper.swift */,
+				DAA996FA1B2E768F00BF27B1 /* Configuracao.swift */,
+				DAA996FC1B2F984000BF27B1 /* NetworkHelper.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		DA5BEA491B29467C00B9C1C0 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				DA5BEA4C1B29468600B9C1C0 /* Base64.h */,
+				DA5BEA4D1B29468600B9C1C0 /* Base64.m */,
+				DA5BEA4E1B29468600B9C1C0 /* Criptografia.h */,
+				DA5BEA4F1B29468600B9C1C0 /* Criptografia.m */,
+				DA5BEA501B29468600B9C1C0 /* InfoApp.h */,
+				DA5BEA511B29468600B9C1C0 /* InfoApp.m */,
+				DA5BEA521B29468600B9C1C0 /* SVProgressHUD.h */,
+				DA5BEA531B29468600B9C1C0 /* SVProgressHUD.m */,
+			);
+			name = Lib;
+			sourceTree = "<group>";
+		};
 		DA5D2B551B24F54400E8037B = {
 			isa = PBXGroup;
 			children = (
+				DA5BEA331B29463F00B9C1C0 /* Utils */,
+				DA5D2B9A1B2508A800E8037B /* imagens */,
+				DA5D2B8F1B24FF8500E8037B /* ViewControllers */,
+				DA5D2B8E1B24FF7A00E8037B /* Frameworks */,
 				DA5D2B601B24F54400E8037B /* SiscofaMobile */,
 				DA5D2B791B24F54500E8037B /* SiscofaMobileTests */,
 				DA5D2B5F1B24F54400E8037B /* Products */,
@@ -79,9 +157,9 @@
 		DA5D2B601B24F54400E8037B /* SiscofaMobile */ = {
 			isa = PBXGroup;
 			children = (
+				DAA996FE1B2FA29400BF27B1 /* Main.storyboard */,
 				DA5D2B631B24F54400E8037B /* AppDelegate.swift */,
 				DA5D2B681B24F54400E8037B /* ViewController.swift */,
-				DA5D2B6A1B24F54400E8037B /* Main.storyboard */,
 				DA5D2B6D1B24F54400E8037B /* Images.xcassets */,
 				DA5D2B6F1B24F54400E8037B /* LaunchScreen.xib */,
 				DA5D2B651B24F54400E8037B /* SiscofaMobile.xcdatamodeld */,
@@ -113,6 +191,38 @@
 				DA5D2B7B1B24F54500E8037B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DA5D2B8E1B24FF7A00E8037B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DAA997031B2FAEFE00BF27B1 /* libCTWakeCommandParserDynamic.dylib */,
+				DA5D2B8C1B24FA4700E8037B /* Foundation.framework */,
+				DA5D2B8A1B24FA4000E8037B /* CoreGraphics.framework */,
+				DA5D2B881B24FA3400E8037B /* UIKit.framework */,
+				DA5D2B861B24FA0B00E8037B /* libsqlite3.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA5D2B8F1B24FF8500E8037B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA5D2B981B2500EC00E8037B /* ManterFazendaVC.swift */,
+				DA19B7D21B292AF100A04289 /* LoginVC.swift */,
+				DA5BEA5B1B294ADE00B9C1C0 /* CadastroVC.swift */,
+				DAA997011B2FA83600BF27B1 /* TabBarHomeController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DA5D2B9A1B2508A800E8037B /* imagens */ = {
+			isa = PBXGroup;
+			children = (
+				DA5D2B9D1B250B9F00E8037B /* boi.png */,
+				DA5D2B9B1B2508C000E8037B /* fazenda.png */,
+			);
+			name = imagens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +305,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA5D2B6C1B24F54400E8037B /* Main.storyboard in Resources */,
 				DA5D2B711B24F54400E8037B /* LaunchScreen.xib in Resources */,
+				DAA997001B2FA29400BF27B1 /* Main.storyboard in Resources */,
+				DA5D2B9E1B250B9F00E8037B /* boi.png in Resources */,
 				DA5D2B6E1B24F54400E8037B /* Images.xcassets in Resources */,
+				DA5D2B9C1B2508C000E8037B /* fazenda.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,9 +327,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAA996FD1B2F984000BF27B1 /* NetworkHelper.swift in Sources */,
+				DA5BEA551B29468600B9C1C0 /* Base64.m in Sources */,
+				DA5BEA5C1B294ADE00B9C1C0 /* CadastroVC.swift in Sources */,
+				DAA996FB1B2E768F00BF27B1 /* Configuracao.swift in Sources */,
+				DA5BEA571B29468600B9C1C0 /* InfoApp.m in Sources */,
 				DA5D2B691B24F54400E8037B /* ViewController.swift in Sources */,
+				DA5BEA5A1B2946BF00B9C1C0 /* JSONHelper.swift in Sources */,
+				DA5D2B991B2500EC00E8037B /* ManterFazendaVC.swift in Sources */,
+				DA5BEA581B29468600B9C1C0 /* SVProgressHUD.m in Sources */,
+				DAA997021B2FA83600BF27B1 /* TabBarHomeController.swift in Sources */,
+				DA5BEA471B29466B00B9C1C0 /* Network.m in Sources */,
+				DA5BEA561B29468600B9C1C0 /* Criptografia.m in Sources */,
 				DA5D2B671B24F54400E8037B /* SiscofaMobile.xcdatamodeld in Sources */,
 				DA5D2B641B24F54400E8037B /* AppDelegate.swift in Sources */,
+				DA19B7D31B292AF100A04289 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,20 +364,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DA5D2B6A1B24F54400E8037B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA5D2B6B1B24F54400E8037B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DA5D2B6F1B24F54400E8037B /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DA5D2B701B24F54400E8037B /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		DAA996FE1B2FA29400BF27B1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAA996FF1B2FA29400BF27B1 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -340,9 +464,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SiscofaMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SiscofaMobile-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -350,9 +477,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SiscofaMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SiscofaMobile-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -409,6 +538,7 @@
 				DA5D2B821B24F54500E8037B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA5D2B831B24F54500E8037B /* Build configuration list for PBXNativeTarget "SiscofaMobileTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +547,7 @@
 				DA5D2B851B24F54500E8037B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

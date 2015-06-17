@@ -31,7 +31,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C8o-sO-Dnc">
                                 <rect key="frame" x="100" y="252" width="186" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Senha:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDo-2e-DPU">
                                 <rect key="frame" x="28" y="258" width="53.5" height="20.5"/>
@@ -196,7 +196,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Voltar" id="QAM-fc-Sge">
                                             <connections>
                                                 <action selector="voltar:" destination="ujx-R7-llt" id="O8B-Y2-LzR"/>
-                                                <segue destination="vXZ-lx-hvc" kind="show" id="fE8-LW-8gB"/>
+                                                <segue destination="vXZ-lx-hvc" kind="show" identifier="sg_voltar_login" id="fE8-LW-8gB"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

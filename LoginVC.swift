@@ -52,7 +52,7 @@ class LoginVC: UIViewController {
                 }
                 
                 if responseString == "USER_NAO_CADASTRADO" {
-                    var alert = UIAlertController(title: "Alerta", message: "Usuario nao cadastrado", preferredStyle: UIAlertControllerStyle.Alert)
+                    var alert = UIAlertController(title: "Alerta", message: "Usuário nao cadastrado", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
                 }

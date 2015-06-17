@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CadastroVC: UIViewController {
+class CadastroVC: UIViewController, UIAlertViewDelegate {
 
     @IBOutlet var lbNome: UITextField!
     @IBOutlet var lbEmail: UITextField!
@@ -41,26 +41,48 @@ class CadastroVC: UIViewController {
                 return
             }
             
-            // You can print out response object
-            println("response = \(response)")
-            
             // Print out response body
             let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
             println("responseString = \(responseString)")
             
-            //Let's convert response sent from a server side script to a NSDictionary object:
+            var alert = UIAlertController(title: "Alerta", message: "Usuário cadastrado com sucesso", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil))
             
-            var err: NSError?
-            var myJSON = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error:&err) as? NSDictionary
+            var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                UIAlertAction in
+                NSLog("OK Pressed")
+                self.performSegueWithIdentifier("sg_voltar_login", sender: nil)
+            }
             
+            dispatch_async(dispatch_get_main_queue()) {
+                switch responseString as String {
+                    case "USUARIO_JA_CADASTRADO":
+                        alert.message = "Usuário já existe!"
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    
+                    case "ERRO_CADASTRO":
+                        alert.message = "Erro no cadastro, contate o administrador!"
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    case "[{\"property\":\"email\",\"message\":\"Email Invalido\"}]":
+                        alert.message = "Email Inválido"
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    case "USUARIO_CADASTRADO_SUCESSO":
+                        var alertSucess = UIAlertController(title: "Alerta", message: "Usuário cadastrado com sucesso", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertSucess.addAction(okAction)
+                        self.presentViewController(alertSucess, animated: true, completion: nil)
+                    default:
+                        println("Nao sei o que aconteceu")
+                }
+                
+            }
         }
         
         task.resume()
         
-        
-        
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

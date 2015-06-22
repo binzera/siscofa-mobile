@@ -13,7 +13,7 @@ class NetworkHelper {
     class func isConnectedToNetwork() -> Bool {
         var status:Bool = false
         
-        let url = NSURL(string: "http://google.com")
+        let url = NSURL(string: "http://localhost:8080")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "HEAD"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData

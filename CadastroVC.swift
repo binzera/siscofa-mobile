@@ -46,35 +46,37 @@ class CadastroVC: UIViewController, UIAlertViewDelegate {
             println("responseString = \(responseString)")
             
             var alert = UIAlertController(title: "Alerta", message: "Usuário cadastrado com sucesso", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil))
             
             var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                 UIAlertAction in
-                NSLog("OK Pressed")
                 self.performSegueWithIdentifier("sg_voltar_login", sender: nil)
             }
+            
+            var voltarAction = UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil)
             
             dispatch_async(dispatch_get_main_queue()) {
                 switch responseString as String {
                     case "USUARIO_JA_CADASTRADO":
                         alert.message = "Usuário já existe!"
+                        alert.addAction(UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil))
                         self.presentViewController(alert, animated: true, completion: nil)
                     
                     
                     case "ERRO_CADASTRO":
                         alert.message = "Erro no cadastro, contate o administrador!"
+                        alert.addAction(UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil))
                         self.presentViewController(alert, animated: true, completion: nil)
                     
                     case "[{\"property\":\"email\",\"message\":\"Email Invalido\"}]":
                         alert.message = "Email Inválido"
+                        alert.addAction(UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil))
                         self.presentViewController(alert, animated: true, completion: nil)
                     
                     case "USUARIO_CADASTRADO_SUCESSO":
-                        var alertSucess = UIAlertController(title: "Alerta", message: "Usuário cadastrado com sucesso", preferredStyle: UIAlertControllerStyle.Alert)
-                        alertSucess.addAction(okAction)
-                        self.presentViewController(alertSucess, animated: true, completion: nil)
+                        alert.addAction(okAction)
+                        self.presentViewController(alert, animated: true, completion: nil)
                     default:
-                        println("Nao sei o que aconteceu")
+                        println("Nao sei o que aconteceu, o retorno foi:  \(responseString)")
                 }
                 
             }

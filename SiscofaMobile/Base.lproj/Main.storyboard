@@ -310,10 +310,10 @@
             </objects>
             <point key="canvasLocation" x="194.5" y="-326.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Manter FazendaVC-->
         <scene sceneID="UK5-Rx-LgQ">
             <objects>
-                <viewController id="BzH-qB-SWQ" sceneMemberID="viewController">
+                <viewController id="BzH-qB-SWQ" customClass="ManterFazendaVC" customModule="SiscofaMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cvc-hv-pcT"/>
                         <viewControllerLayoutGuide type="bottom" id="ehJ-vu-zki"/>
@@ -356,10 +356,23 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Biy-n9-Mng">
+                                <rect key="frame" x="122" y="299" width="30" height="30"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cadastrarFazenda:" destination="BzH-qB-SWQ" eventType="touchUpInside" id="sZb-ZB-38G"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tfAlqueires" destination="oJh-g6-QeJ" id="MCr-QM-V4X"/>
+                        <outlet property="tfNomeFaz" destination="iNN-f7-3cw" id="x0z-LC-k5X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tFe-cV-s8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

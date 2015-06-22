@@ -17,7 +17,20 @@ class LoginVC: UIViewController {
     
     
     @IBAction func logar(sender: AnyObject) {
+        
+        var alert = UIAlertController(title: "Alerta", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        
+        if(tfUser.text == "" || tfSenha.text == ""){
+            alert.message = "Usuário e senha devem ser preenchidos!"
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+            
+        }
+        
+        
         if NetworkHelper.isConnectedToNetwork() {
+            
             var usuario = [ "usuario": tfUser.text,
                 "senha": tfSenha.text]
             
@@ -42,38 +55,53 @@ class LoginVC: UIViewController {
                 
                 // Print out response body
                 let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("responseString = \(responseString)")
                 
                 dispatch_async(dispatch_get_main_queue()) {
                 
-                if responseString == "OK" {
-                    self.performSegueWithIdentifier("tabBarHome", sender: nil)
-                    
-                }
-                
-                if responseString == "USER_NAO_CADASTRADO" {
-                    var alert = UIAlertController(title: "Alerta", message: "Usuário nao cadastrado", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                }
-                
-                if responseString == "SENHA_INCORRETA" {
-                    var alerta = UIAlertController(title: "Alerta", message: "Senha nao confere.", preferredStyle: UIAlertControllerStyle.Alert)
-                    
-                    alerta.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+                    var erroConvertJson: NSError?
+                    var jsonResult: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &erroConvertJson)
+                    if(erroConvertJson == nil){
+                        println(jsonResult)
+                        NSUserDefaults.standardUserDefaults().setObject(jsonResult, forKey: "usuario")
+                        self.performSegueWithIdentifier("tabBarHome", sender: nil)
                         
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                        
-                    }))
-                    
-                    self.presentViewController(alerta, animated: true, completion: nil)
-                }
+                    } else {
+                            
+                        switch responseString as String {
+                            
+                            case "USER_NAO_CADASTRADO":
+                                alert.message = "Usuário não cadastrado"
+                                self.presentViewController(alert, animated: true, completion: nil)
+                            
+                            case "SENHA_INCORRETA":
+                                //Criei outra forma de alert para testar a diferenca entre elas
+                                var alerta = UIAlertController(title: "Alerta", message: "Senha nao confere.", preferredStyle: UIAlertControllerStyle.Alert)
+                            
+                                alerta.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+                                
+                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                
+                                }))
+                            
+                                self.presentViewController(alerta, animated: true, completion: nil)
+                            
+                            
+                            default:
+                                alert.message = "O Servidor retornou algo inesperado, contate o administrador"
+                                self.presentViewController(alert, animated: true, completion: nil)
+                                println("Nao sei o que aconteceu, o retorno foi:  \(responseString)")
+                            
+                        }
+                    }
                 }
                 
             }
             
             task.resume()
             
+        } else {
+            alert.message = "Sem conexão com a internet! Tente mais tarde."
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         
     }

@@ -304,11 +304,88 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="BzH-qB-SWQ" kind="show" identifier="sg_cadastro_fazenda" id="psc-Bv-Ybi"/>
+                        <segue destination="fWX-CV-GLh" kind="show" identifier="sg_cadastro_raca" id="U8r-p8-MhA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qly-kk-1g6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="194.5" y="-326.5"/>
+            <point key="canvasLocation" x="222.5" y="-330.5"/>
+        </scene>
+        <!--Manter RacaVC-->
+        <scene sceneID="4LG-9g-gWM">
+            <objects>
+                <viewController id="fWX-CV-GLh" customClass="ManterRacaVC" customModule="SiscofaMobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UMK-Ji-wTT"/>
+                        <viewControllerLayoutGuide type="bottom" id="68F-Wc-sIo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zAN-01-gTD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-LN-x5G">
+                                <rect key="frame" x="69" y="106" width="269" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Raça:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcu-Jn-wfm">
+                                <rect key="frame" x="16" y="109" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZs-jR-btO">
+                                <rect key="frame" x="289" y="144" width="43" height="30"/>
+                                <state key="normal" title="Salvar">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btSalvar:" destination="fWX-CV-GLh" eventType="touchUpInside" id="gQh-LG-CV7"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kpb-ae-A3j">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Cadastro de Raças" id="p9N-D8-PwG">
+                                        <barButtonItem key="leftBarButtonItem" title="Voltar" id="Xtq-io-eUN">
+                                            <connections>
+                                                <segue destination="NJM-f4-84k" kind="show" identifier="sg_voltar_home" id="UIy-ZX-kqX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="soC-fD-wBm">
+                                <rect key="frame" x="0.0" y="230" width="367" height="361"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celula" id="i9U-8G-iNW">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i9U-8G-iNW" id="I8f-6u-hmA">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Raças já cadastradas:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjF-mZ-fwv">
+                                <rect key="frame" x="16" y="193" width="251" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="lbRaca" destination="SPh-LN-x5G" id="scv-of-a69"/>
+                        <outlet property="tableRacas" destination="soC-fD-wBm" id="IMI-rE-gV4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BX3-4j-agw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1032.5" y="144.5"/>
         </scene>
         <!--Manter FazendaVC-->
         <scene sceneID="UK5-Rx-LgQ">
@@ -376,7 +453,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tFe-cV-s8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="671.5" y="-707.5"/>
+            <point key="canvasLocation" x="861.5" y="-835.5"/>
         </scene>
         <!--Tab Bar Home Controller-->
         <scene sceneID="uun-dr-nUd">
@@ -421,6 +498,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Dqu-0l-8Af"/>
+        <segue reference="UIy-ZX-kqX"/>
     </inferredMetricsTieBreakers>
 </document>

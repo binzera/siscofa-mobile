@@ -29,6 +29,7 @@
 		DA5D2B9C1B2508C000E8037B /* fazenda.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D2B9B1B2508C000E8037B /* fazenda.png */; };
 		DA5D2B9E1B250B9F00E8037B /* boi.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D2B9D1B250B9F00E8037B /* boi.png */; };
 		DA74BCC01B35058E0093190A /* SiscofaHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74BCBF1B35058E0093190A /* SiscofaHomeVC.swift */; };
+		DA7BD6181B8EBF2A00CA1478 /* ManterRacaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BD6171B8EBF2A00CA1478 /* ManterRacaVC.swift */; };
 		DAA996FB1B2E768F00BF27B1 /* Configuracao.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA996FA1B2E768F00BF27B1 /* Configuracao.swift */; };
 		DAA996FD1B2F984000BF27B1 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA996FC1B2F984000BF27B1 /* NetworkHelper.swift */; };
 		DAA997001B2FA29400BF27B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAA996FE1B2FA29400BF27B1 /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 		DA5D2B9B1B2508C000E8037B /* fazenda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fazenda.png; sourceTree = "<group>"; };
 		DA5D2B9D1B250B9F00E8037B /* boi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boi.png; sourceTree = "<group>"; };
 		DA74BCBF1B35058E0093190A /* SiscofaHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiscofaHomeVC.swift; sourceTree = "<group>"; };
+		DA7BD6171B8EBF2A00CA1478 /* ManterRacaVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManterRacaVC.swift; sourceTree = "<group>"; };
 		DAA996FA1B2E768F00BF27B1 /* Configuracao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuracao.swift; sourceTree = "<group>"; };
 		DAA996FC1B2F984000BF27B1 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		DAA996FF1B2FA29400BF27B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				DA5BEA5B1B294ADE00B9C1C0 /* CadastroVC.swift */,
 				DAA997011B2FA83600BF27B1 /* TabBarHomeController.swift */,
 				DA74BCBF1B35058E0093190A /* SiscofaHomeVC.swift */,
+				DA7BD6171B8EBF2A00CA1478 /* ManterRacaVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				DA5BEA571B29468600B9C1C0 /* InfoApp.m in Sources */,
 				DA5D2B691B24F54400E8037B /* ViewController.swift in Sources */,
 				DA5BEA5A1B2946BF00B9C1C0 /* JSONHelper.swift in Sources */,
+				DA7BD6181B8EBF2A00CA1478 /* ManterRacaVC.swift in Sources */,
 				DA5D2B991B2500EC00E8037B /* ManterFazendaVC.swift in Sources */,
 				DA74BCC01B35058E0093190A /* SiscofaHomeVC.swift in Sources */,
 				DA5BEA581B29468600B9C1C0 /* SVProgressHUD.m in Sources */,

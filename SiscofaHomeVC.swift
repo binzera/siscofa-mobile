@@ -33,6 +33,8 @@ class SiscofaHomeVC: UIViewController, UITableViewDelegate {
         switch indexPath.row {
             case 0: performSegueWithIdentifier("sg_cadastro_fazenda", sender: nil)
             
+            case 4: performSegueWithIdentifier("sg_cadastro_raca", sender: nil)
+            
             default: println(indexPath.row)
         }
     }

@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		DA19B7D31B292AF100A04289 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19B7D21B292AF100A04289 /* LoginVC.swift */; };
-		DA5BEA471B29466B00B9C1C0 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA3F1B29466B00B9C1C0 /* Network.m */; };
-		DA5BEA551B29468600B9C1C0 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA4D1B29468600B9C1C0 /* Base64.m */; };
-		DA5BEA561B29468600B9C1C0 /* Criptografia.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA4F1B29468600B9C1C0 /* Criptografia.m */; };
-		DA5BEA571B29468600B9C1C0 /* InfoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA511B29468600B9C1C0 /* InfoApp.m */; };
 		DA5BEA581B29468600B9C1C0 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA531B29468600B9C1C0 /* SVProgressHUD.m */; };
 		DA5BEA5A1B2946BF00B9C1C0 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA591B2946BF00B9C1C0 /* JSONHelper.swift */; };
 		DA5BEA5C1B294ADE00B9C1C0 /* CadastroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA5B1B294ADE00B9C1C0 /* CadastroVC.swift */; };
@@ -48,14 +44,6 @@
 
 /* Begin PBXFileReference section */
 		DA19B7D21B292AF100A04289 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		DA5BEA3E1B29466B00B9C1C0 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
-		DA5BEA3F1B29466B00B9C1C0 /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
-		DA5BEA4C1B29468600B9C1C0 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
-		DA5BEA4D1B29468600B9C1C0 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
-		DA5BEA4E1B29468600B9C1C0 /* Criptografia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Criptografia.h; sourceTree = "<group>"; };
-		DA5BEA4F1B29468600B9C1C0 /* Criptografia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Criptografia.m; sourceTree = "<group>"; };
-		DA5BEA501B29468600B9C1C0 /* InfoApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoApp.h; sourceTree = "<group>"; };
-		DA5BEA511B29468600B9C1C0 /* InfoApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoApp.m; sourceTree = "<group>"; };
 		DA5BEA521B29468600B9C1C0 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		DA5BEA531B29468600B9C1C0 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		DA5BEA591B2946BF00B9C1C0 /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
@@ -112,8 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				DA5BEA491B29467C00B9C1C0 /* Lib */,
-				DA5BEA3E1B29466B00B9C1C0 /* Network.h */,
-				DA5BEA3F1B29466B00B9C1C0 /* Network.m */,
 				DA5BEA591B2946BF00B9C1C0 /* JSONHelper.swift */,
 				DAA996FA1B2E768F00BF27B1 /* Configuracao.swift */,
 				DAA996FC1B2F984000BF27B1 /* NetworkHelper.swift */,
@@ -124,12 +110,6 @@
 		DA5BEA491B29467C00B9C1C0 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				DA5BEA4C1B29468600B9C1C0 /* Base64.h */,
-				DA5BEA4D1B29468600B9C1C0 /* Base64.m */,
-				DA5BEA4E1B29468600B9C1C0 /* Criptografia.h */,
-				DA5BEA4F1B29468600B9C1C0 /* Criptografia.m */,
-				DA5BEA501B29468600B9C1C0 /* InfoApp.h */,
-				DA5BEA511B29468600B9C1C0 /* InfoApp.m */,
 				DA5BEA521B29468600B9C1C0 /* SVProgressHUD.h */,
 				DA5BEA531B29468600B9C1C0 /* SVProgressHUD.m */,
 			);
@@ -334,10 +314,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAA996FD1B2F984000BF27B1 /* NetworkHelper.swift in Sources */,
-				DA5BEA551B29468600B9C1C0 /* Base64.m in Sources */,
 				DA5BEA5C1B294ADE00B9C1C0 /* CadastroVC.swift in Sources */,
 				DAA996FB1B2E768F00BF27B1 /* Configuracao.swift in Sources */,
-				DA5BEA571B29468600B9C1C0 /* InfoApp.m in Sources */,
 				DA5D2B691B24F54400E8037B /* ViewController.swift in Sources */,
 				DA5BEA5A1B2946BF00B9C1C0 /* JSONHelper.swift in Sources */,
 				DA7BD6181B8EBF2A00CA1478 /* ManterRacaVC.swift in Sources */,
@@ -345,8 +323,6 @@
 				DA74BCC01B35058E0093190A /* SiscofaHomeVC.swift in Sources */,
 				DA5BEA581B29468600B9C1C0 /* SVProgressHUD.m in Sources */,
 				DAA997021B2FA83600BF27B1 /* TabBarHomeController.swift in Sources */,
-				DA5BEA471B29466B00B9C1C0 /* Network.m in Sources */,
-				DA5BEA561B29468600B9C1C0 /* Criptografia.m in Sources */,
 				DA5D2B671B24F54400E8037B /* SiscofaMobile.xcdatamodeld in Sources */,
 				DA5D2B641B24F54400E8037B /* AppDelegate.swift in Sources */,
 				DA19B7D31B292AF100A04289 /* LoginVC.swift in Sources */,

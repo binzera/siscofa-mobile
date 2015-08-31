@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA0A85611B93988700C26915 /* ManterLoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0A85601B93988700C26915 /* ManterLoteVC.swift */; };
 		DA19B7D31B292AF100A04289 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19B7D21B292AF100A04289 /* LoginVC.swift */; };
 		DA5BEA581B29468600B9C1C0 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA531B29468600B9C1C0 /* SVProgressHUD.m */; };
 		DA5BEA5A1B2946BF00B9C1C0 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5BEA591B2946BF00B9C1C0 /* JSONHelper.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA0A85601B93988700C26915 /* ManterLoteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManterLoteVC.swift; sourceTree = "<group>"; };
 		DA19B7D21B292AF100A04289 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		DA5BEA521B29468600B9C1C0 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		DA5BEA531B29468600B9C1C0 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				DAA997011B2FA83600BF27B1 /* TabBarHomeController.swift */,
 				DA74BCBF1B35058E0093190A /* SiscofaHomeVC.swift */,
 				DA7BD6171B8EBF2A00CA1478 /* ManterRacaVC.swift */,
+				DA0A85601B93988700C26915 /* ManterLoteVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAA996FD1B2F984000BF27B1 /* NetworkHelper.swift in Sources */,
+				DA0A85611B93988700C26915 /* ManterLoteVC.swift in Sources */,
 				DA5BEA5C1B294ADE00B9C1C0 /* CadastroVC.swift in Sources */,
 				DAA996FB1B2E768F00BF27B1 /* Configuracao.swift in Sources */,
 				DA5D2B691B24F54400E8037B /* ViewController.swift in Sources */,

@@ -404,9 +404,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Cadastro Lotes" id="0GN-JR-JcY">
-                                        <barButtonItem key="leftBarButtonItem" title="Voltar" id="VKY-Iv-y2M">
+                                        <barButtonItem key="leftBarButtonItem" title="Voltar" id="VKY-Iv-y2M"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="g7t-0m-WJf">
                                             <connections>
-                                                <segue destination="fCl-II-zSW" kind="show" id="MJb-ys-PJB"/>
+                                                <action selector="salvar:" destination="ULK-DC-Q10" id="b6x-4I-zX8"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -465,6 +466,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="idadeBeginEdit:" destination="ULK-DC-Q10" eventType="editingDidBegin" id="QAg-5U-w7a"/>
+                                    <action selector="idadeEndEdit:" destination="ULK-DC-Q10" eventType="editingDidEnd" id="xTg-3Z-NvJ"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y2B-BJ-i4z">
@@ -473,6 +475,22 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="racaBeginEdit:" destination="ULK-DC-Q10" eventType="editingDidBegin" id="Gpz-lf-W3t"/>
+                                    <action selector="racaEndEdit:" destination="ULK-DC-Q10" eventType="editingDidEnd" id="mh1-4q-sVD"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fazenda:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtO-1b-z5V">
+                                <rect key="frame" x="15" y="450" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Ig-Ny-HWd">
+                                <rect key="frame" x="15" y="479" width="203" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="fazendaBeginEdit:" destination="ULK-DC-Q10" eventType="editingDidBegin" id="f2l-gg-nfi"/>
+                                    <action selector="fazendaEndEdit:" destination="ULK-DC-Q10" eventType="editingDidEnd" id="Q8d-6t-LIe"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -482,6 +500,11 @@
                     <connections>
                         <outlet property="idadeTextField" destination="SYG-uc-WgT" id="Xx8-Qk-zuH"/>
                         <outlet property="racaTextField" destination="Y2B-BJ-i4z" id="AaX-Hc-jAf"/>
+                        <outlet property="sexoOutlet" destination="R8f-O2-Suq" id="eUz-DU-jlr"/>
+                        <outlet property="tfArrobas" destination="li4-mo-ltD" id="OWz-oi-YMc"/>
+                        <outlet property="tfFazenda" destination="8Ig-Ny-HWd" id="Ok9-yO-kHy"/>
+                        <outlet property="tfQuantidade" destination="e3x-xo-ZAr" id="PUK-Um-GWg"/>
+                        <segue destination="NJM-f4-84k" kind="show" identifier="sg_voltar_home" id="c6c-md-Wsm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqs-NC-fSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -599,7 +622,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UIy-ZX-kqX"/>
-        <segue reference="MJb-ys-PJB"/>
+        <segue reference="c6c-md-Wsm"/>
     </inferredMetricsTieBreakers>
 </document>

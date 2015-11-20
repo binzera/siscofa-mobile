@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 GMS. All rights reserved.
 //
 
-import UIkit
+import UIKit
 
 class TabBarHomeController: UITabBarController {
 

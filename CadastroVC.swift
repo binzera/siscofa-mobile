@@ -17,12 +17,12 @@ class CadastroVC: UIViewController, UIAlertViewDelegate {
 
     
     @IBAction func cadastrarUsuario(sender: AnyObject) {
-        var usuario = ["nome" : lbNome.text,
+        let usuario = ["nome" : lbNome.text,
                     "email" : lbEmail.text,
                     "usuario": lbUser.text,
                     "senha": lbSenha.text]
         
-        var json = JSONHelper.JSONStringify(usuario, prettyPrinted: false);
+        let json = JSONHelper.JSONStringify(usuario as! AnyObject, prettyPrinted: false);
         
         let myUrl = NSURL(string: Configuracao.getWSURL() + "/cadastrarUsuario");
         
@@ -37,25 +37,25 @@ class CadastroVC: UIViewController, UIAlertViewDelegate {
             
             if error != nil
             {
-                println("error=\(error)")
+                print("error=\(error)")
                 return
             }
             
             // Print out response body
-            let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("responseString = \(responseString)")
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString)")
             
-            var alert = UIAlertController(title: "Alerta", message: "Usuário cadastrado com sucesso", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Alerta", message: "Usuário cadastrado com sucesso", preferredStyle: UIAlertControllerStyle.Alert)
             
-            var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                 UIAlertAction in
                 self.performSegueWithIdentifier("sg_voltar_login", sender: nil)
             }
             
-            var voltarAction = UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil)
+            _ = UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil)
             
             dispatch_async(dispatch_get_main_queue()) {
-                switch responseString as String {
+                switch responseString as! String {
                     case "USUARIO_JA_CADASTRADO":
                         alert.message = "Usuário já existe!"
                         alert.addAction(UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil))
@@ -76,7 +76,7 @@ class CadastroVC: UIViewController, UIAlertViewDelegate {
                         alert.addAction(okAction)
                         self.presentViewController(alert, animated: true, completion: nil)
                     default:
-                        println("Nao sei o que aconteceu, o retorno foi:  \(responseString)")
+                        print("Nao sei o que aconteceu, o retorno foi:  \(responseString)")
                 }
                 
             }

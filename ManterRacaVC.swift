@@ -17,7 +17,7 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func btSalvar(sender: AnyObject) {
         
-        let raca = ["nome" : self.lbRaca.text];
+        let raca = ["nome" : self.lbRaca.text] as! AnyObject;
         
         var alert = UIAlertController(title: "Alerta", message: "Raca cadastrada com sucesso", preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -56,17 +56,17 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 
                 if error != nil
                 {
-                    println("error=\(error)")
+                    print("error=\(error)")
                     return
                 }
                 
                 // Print out response body
-                let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("responseString = \(responseString)")
+                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print("responseString = \(responseString)")
                 
                 
                 dispatch_async(dispatch_get_main_queue()) {
-                    switch responseString as String {
+                    switch responseString as! String {
                     case "RACA_JA_EXISTE":
                         alert.message = "Raca já foi cadastrada!"
                         alert.addAction(voltarAction)
@@ -81,7 +81,7 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                         alert.addAction(okAction)
                         self.presentViewController(alert, animated: true, completion: nil)
                     default:
-                        println("Nao sei o que aconteceu")
+                        print("Nao sei o que aconteceu")
                     }
                 }
                 
@@ -99,7 +99,7 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     override func viewWillAppear(animated: Bool) {
-        println("Vai Aparecer")
+        print("Vai Aparecer")
         self.tableRacas.registerClass(UITableViewCell.self, forCellReuseIdentifier: "celula")
         self.tableRacas.dataSource = self
     }
@@ -107,47 +107,52 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 
         
     override func viewDidLoad() {
-        println("Iniciou o load")
+        print("Iniciou o load")
         
         if NetworkHelper.isConnectedToNetwork() {
             
             let myUrl = NSURL(string: Configuracao.getWSURL() + "/racas");
-            
-            let request = NSURLRequest(URL:myUrl!);
-            
-            var error: NSError?
-            var response : NSURLResponse?
-            
-            let urlData: NSData = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)!;
-            
-            var erroConvertJson: NSError?
-            var jsonResult: NSArray = NSJSONSerialization.JSONObjectWithData(urlData, options: NSJSONReadingOptions.MutableContainers, error: &erroConvertJson) as NSArray!
-            if(erroConvertJson == nil){
-                self.arrayRacas = jsonResult
-                println("fez o json")
-            
-            } else {
-                println(erroConvertJson)
+
+            let task = NSURLSession.sharedSession().dataTaskWithURL(myUrl!) {(data, response, error) in
+                print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+                
+                if let httpResponse = response as? NSHTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        
+                        do  {
+                            let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSArray
+                            
+                            self.arrayRacas = jsonResult
+                            print("fez o json")
+                            
+                        } catch {
+                            print("Erro na conversao do JSON")
+                        }
+
+                    }
+                }
             }
+            
+            task.resume()
             
             
         } else {
             
-            var alert = UIAlertController(title: "Alerta", message: "Sem conexão com a internet, tente mais tarde!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Alerta", message: "Sem conexão com a internet, tente mais tarde!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println(self.arrayRacas.count)
+        print(self.arrayRacas.count)
         return self.arrayRacas.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "celula")
-        println(self.arrayRacas[indexPath.row]["nome"])
-        cell.textLabel?.text = self.arrayRacas[indexPath.row]["nome"] as String!
+        print(self.arrayRacas[indexPath.row]["nome"])
+        cell.textLabel?.text = self.arrayRacas[indexPath.row]["nome"] as! String
         
         return cell
         
@@ -159,7 +164,7 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             
         //case 4: performSegueWithIdentifier("sg_cadastro_raca", sender: nil)
             
-        default: println(indexPath.row)
+        default: print(indexPath.row)
         }
     }
     
@@ -168,9 +173,9 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     
     func startConnection(){
-        var url: NSURL = NSURL(string: Configuracao.getWSURL() + "/racas")!;
-        var request: NSURLRequest = NSURLRequest(URL: url)
-        var connection: NSURLConnection = NSURLConnection(request: request, delegate: self, startImmediately: false)!
+        let url: NSURL = NSURL(string: Configuracao.getWSURL() + "/racas")!;
+        let request: NSURLRequest = NSURLRequest(URL: url)
+        let connection: NSURLConnection = NSURLConnection(request: request, delegate: self, startImmediately: false)!
         connection.start()
     }
     
@@ -179,7 +184,7 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection!) {
-        var err: NSError
+        var _: NSError
         // throwing an error on the line below (can't figure out where the error message is)
        // var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         //println(jsonResult)

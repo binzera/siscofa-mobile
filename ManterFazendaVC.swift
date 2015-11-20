@@ -16,11 +16,11 @@ class ManterFazendaVC: UIViewController, UIAlertViewDelegate {
     @IBAction func cadastrarFazenda(sender: AnyObject) {
         
 
-
+        var usuario = NSUserDefaults.standardUserDefaults().objectForKey("usuario") as! Dictionary<String,AnyObject>
         
-        let fazenda = ["nome" : self.tfNomeFaz.text,
-            "qtdAlqueires" : self.tfAlqueires.text,
-            "usuario": NSUserDefaults.standardUserDefaults().objectForKey("usuario")!]
+        var fazenda = (nome : self.tfNomeFaz.text,
+            qtdAlqueires : self.tfAlqueires.text,
+            usuario: usuario) as! AnyObject
         
         var alert = UIAlertController(title: "Alerta", message: "Fazenda cadastrada com sucesso", preferredStyle: UIAlertControllerStyle.Alert)
         var voltarAction = UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil)
@@ -57,17 +57,17 @@ class ManterFazendaVC: UIViewController, UIAlertViewDelegate {
                 
                 if error != nil
                 {
-                    println("error=\(error)")
+                    print("error=\(error)")
                     return
                 }
                 
                 // Print out response body
-                let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("responseString = \(responseString)")
+                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print("responseString = \(responseString)")
                 
                 
                 dispatch_async(dispatch_get_main_queue()) {
-                    switch responseString as String {
+                    switch responseString as! String {
                         case "FAZ_JA_EXISTE":
                             alert.message = "Fazenda já foi cadastrada!"
                             alert.addAction(voltarAction)
@@ -82,7 +82,7 @@ class ManterFazendaVC: UIViewController, UIAlertViewDelegate {
                             alert.addAction(okAction)
                             self.presentViewController(alert, animated: true, completion: nil)
                         default:
-                            println("Nao sei o que aconteceu")
+                            print("Nao sei o que aconteceu")
                     }
                 }
                 

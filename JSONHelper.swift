@@ -11,13 +11,20 @@ import Foundation
 class JSONHelper {
     
     class func JSONStringify(value: AnyObject, prettyPrinted: Bool = false) -> String {
-        var options = prettyPrinted ? NSJSONWritingOptions.PrettyPrinted : nil
+        
         if NSJSONSerialization.isValidJSONObject(value) {
-            if let data = NSJSONSerialization.dataWithJSONObject(value, options: options, error: nil) {
-                if let string = NSString(data: data, encoding: NSUTF8StringEncoding) {
-                    return string
+            do {
+                
+                if let data : NSData = try NSJSONSerialization.dataWithJSONObject(value, options: .PrettyPrinted) {
+                    if let string = NSString(data: data, encoding: NSUTF8StringEncoding) {
+                        return string as String
+                    }
                 }
+                
+            } catch {
+                print("JSONHelper: Erro ao converter o Objeto para JSON")
             }
+            
         }
         return ""
     }
@@ -25,8 +32,12 @@ class JSONHelper {
     
     func JSONParseArray(jsonString: String) -> [AnyObject] {
         if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) {
-            if let array = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: nil)  as? [AnyObject] {
-                return array
+            do {
+                if let array =  try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments )  as? [AnyObject] {
+                    return array
+                }
+            } catch {
+                print("Erro na conversao do JSON na Classe JsonHelper")
             }
         }
         return [AnyObject]()
@@ -34,9 +45,14 @@ class JSONHelper {
     
     func JSONParseDictionary(jsonString: String) -> [String: AnyObject] {
         if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) {
-            if let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: nil)  as? [String: AnyObject] {
-                return dictionary
+            do {
+                if let dictionary =  try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments )  as? [String: AnyObject] {
+                    return dictionary
+                }
+            } catch {
+                print("Erro na conversao do JSON na Classe JsonHelper")
             }
+            
         }
         return [String: AnyObject]()
     }

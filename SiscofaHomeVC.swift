@@ -37,7 +37,7 @@ class SiscofaHomeVC: UIViewController, UITableViewDelegate {
             
             case 4: performSegueWithIdentifier("sg_cadastro_raca", sender: nil)
             
-            default: println(indexPath.row)
+            default: print(indexPath.row)
         }
     }
 

@@ -8,23 +8,23 @@
 
 import UIKit
 
-class ManterFazendaVC: UIViewController, UIAlertViewDelegate {
+class ManterFazendaVC: UIViewController {
     
     @IBOutlet var tfNomeFaz: UITextField!
     @IBOutlet var tfAlqueires: UITextField!
     
     @IBAction func cadastrarFazenda(sender: AnyObject) {
         
-
-        var usuario = NSUserDefaults.standardUserDefaults().objectForKey("usuario") as! Dictionary<String,AnyObject>
         
-        var fazenda = (nome : self.tfNomeFaz.text,
-            qtdAlqueires : self.tfAlqueires.text,
-            usuario: usuario) as! AnyObject
+        let usuario = NSUserDefaults.standardUserDefaults().objectForKey("usuario") as! Dictionary<String,AnyObject>
         
-        var alert = UIAlertController(title: "Alerta", message: "Fazenda cadastrada com sucesso", preferredStyle: UIAlertControllerStyle.Alert)
-        var voltarAction = UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil)
-        var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+        let fazenda : [String : AnyObject] = ["nome" : self.tfNomeFaz.text!,
+            "qtdAlqueires" : self.tfAlqueires.text!,
+            "usuario" : usuario]
+        
+        let alert = UIAlertController(title: "Alerta", message: "Fazenda cadastrada com sucesso", preferredStyle: UIAlertControllerStyle.Alert)
+        let voltarAction = UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
             UIAlertAction in
             NSLog("OK Pressed")
             self.performSegueWithIdentifier("sg_voltar_home", sender: nil)
@@ -41,7 +41,7 @@ class ManterFazendaVC: UIViewController, UIAlertViewDelegate {
         
         if NetworkHelper.isConnectedToNetwork() {
             
-            var json = JSONHelper.JSONStringify(fazenda, prettyPrinted: false);
+            let json = JSONHelper.JSONStringify(fazenda, prettyPrinted: false);
             
             let myUrl = NSURL(string: Configuracao.getWSURL() + "/cadastrarFazenda");
             
@@ -68,42 +68,42 @@ class ManterFazendaVC: UIViewController, UIAlertViewDelegate {
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     switch responseString as! String {
-                        case "FAZ_JA_EXISTE":
-                            alert.message = "Fazenda já foi cadastrada!"
-                            alert.addAction(voltarAction)
-                            self.presentViewController(alert, animated: true, completion: nil)
-                            
-                        case "ERRO_CADASTRO_FAZ":
-                            alert.message = "Erro no cadastro, contate o administrador!"
-                            alert.addAction(voltarAction)
-                            self.presentViewController(alert, animated: true, completion: nil)
-                            
-                        case "CADASTRO_FAZ_SUCESSO":
-                            alert.addAction(okAction)
-                            self.presentViewController(alert, animated: true, completion: nil)
-                        default:
-                            print("Nao sei o que aconteceu")
+                    case "FAZ_JA_EXISTE":
+                        alert.message = "Fazenda já foi cadastrada!"
+                        alert.addAction(voltarAction)
+                        self.presentViewController(alert, animated: true, completion: nil)
+                        
+                    case "ERRO_CADASTRO_FAZ":
+                        alert.message = "Erro no cadastro, contate o administrador!"
+                        alert.addAction(voltarAction)
+                        self.presentViewController(alert, animated: true, completion: nil)
+                        
+                    case "CADASTRO_FAZ_SUCESSO":
+                        alert.addAction(okAction)
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    default:
+                        print("Nao sei o que aconteceu")
                     }
                 }
                 
-                }
+            }
             
             
             task.resume()
             
             
         } else {
-            var alert = UIAlertController(title: "Alerta", message: "Sem conexão com a internet, tente mais tarde!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Alerta", message: "Sem conexão com a internet, tente mais tarde!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-
+        
     }
     
-//    func alertView(view :UIAlertView, clickedButtonAtIndex :Integer) -> Void {
-//        switch clickedButtonAtIndex {
-//        }
-//    }
+    //    func alertView(view :UIAlertView, clickedButtonAtIndex :Integer) -> Void {
+    //        switch clickedButtonAtIndex {
+    //        }
+    //    }
     
     
     override func viewDidLoad() {

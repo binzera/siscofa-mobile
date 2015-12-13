@@ -50,31 +50,31 @@ class ManterLoteVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         return 1;
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if(tag == "raca") {
-            return racasPickerValues[row]["nome"] as! String
+            return racasPickerValues[row]["nome"] as? String
         }
         if tag == "idade" {
-            return idadePickerValues[row]["descricao"] as! String
+            return idadePickerValues[row]["descricao"] as? String
         }
         if tag == "fazenda" {
-            return fazendaPickerValues[row]["nome"] as! String
+            return fazendaPickerValues[row]["nome"] as? String
         }
         return ""
         
     }
     
-    func pickerView(pickerView: UIPickerView!, didSelectRow row: Int, inComponent component: Int){
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         if(tag == "raca") {
-            racaTextField.text = self.racasPickerValues[row]["nome"] as! String
+            racaTextField.text = self.racasPickerValues[row]["nome"] as? String
             self.view.endEditing(true)
         }
         if tag == "idade" {
-            idadeTextField.text = self.idadePickerValues[row]["descricao"] as! String
+            idadeTextField.text = self.idadePickerValues[row]["descricao"] as? String
             self.view.endEditing(true)
         }
         if tag == "fazenda" {
-            tfFazenda.text = self.fazendaPickerValues[row]["nome"] as! String
+            tfFazenda.text = self.fazendaPickerValues[row]["nome"] as? String
             self.view.endEditing(true)
         }
         
@@ -134,17 +134,16 @@ class ManterLoteVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             
             let usuario: Dictionary<String,AnyObject> = NSUserDefaults.standardUserDefaults().objectForKey("usuario") as! Dictionary<String,AnyObject>
     
-            let lote = (qtdGado: tfQuantidade.text,
-                sexo: sexo,
-                qtdArrobas: tfArrobas.text,
-                valorArroba: 0,
-                fazenda: self.fazendaPickerValues[self.fazendaSelecionado],
-                racaGado: self.racasPickerValues[self.racaSelecionado],
-                idade: self.idadePickerValues[self.idadeSelecionado],
-                usuario: usuario) as! AnyObject;
+            let lote : [String : AnyObject] = ["qtdGado": tfQuantidade.text!,
+                "sexo": sexo,
+                "qtdArrobas": tfArrobas.text!,
+                "valorArroba": 0,
+                "fazenda": self.fazendaPickerValues[self.fazendaSelecionado],
+                "racaGado": self.racasPickerValues[self.racaSelecionado],
+                "idade": self.idadePickerValues[self.idadeSelecionado],
+                "usuario": usuario]
             
             let json = JSONHelper.JSONStringify(lote, prettyPrinted: false);
-            print(json)
             
             let url = NSURL(string: Configuracao.getWSURL() + "/cadastrarLote")
             let request = NSMutableURLRequest(URL:url!);
@@ -231,23 +230,15 @@ class ManterLoteVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             
             var response : NSURLResponse?
             
-            if let httpResponse = response as? NSHTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-            
-                    do  {
-                        let urlData: NSData = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response);
-                        
-                        let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(urlData, options: .AllowFragments) as! NSArray
-                        
-                        self.racasPickerValues = jsonResult
-                        
-                        print("fez o json")
-                        
-                    } catch {
-                        print("Erro na conversao do JSON")
-                    }
-                }
-            } else {
+            do  {
+                let urlData: NSData = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response);
+                
+                let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(urlData, options: .AllowFragments) as! NSArray
+                
+                self.racasPickerValues = jsonResult
+                
+            } catch {
+                print("Erro na conversao do JSON")
                 let alert = UIAlertController(title: "Alerta", message: "Erro ao carregar raças, contate adm!", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
@@ -267,34 +258,28 @@ class ManterLoteVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     func carregarArrayIdades(){
         if NetworkHelper.isConnectedToNetwork() {
             
-            let myUrl = NSURL(string: Configuracao.getWSURL() + "/idades");
+            let url = NSURL(string: Configuracao.getWSURL() + "/idades")
+            let request = NSMutableURLRequest(URL:url!);
             
-            let request = NSURLRequest(URL:myUrl!);
             
             var response : NSURLResponse?
             
-            if let httpResponse = response as? NSHTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    
-                    do  {
-                        let urlData: NSData = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response);
-                        
-                        let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(urlData, options: .AllowFragments) as! NSArray
-                        
-                        self.racasPickerValues = jsonResult
-                        
-                        print("fez o json")
-                        
-                    } catch {
-                        print("Erro na conversao do JSON")
-                    }
-                }
-            } else {
+            do  {
+                let urlData: NSData = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response);
+                
+                let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(urlData, options: .AllowFragments) as! NSArray
+                
+                self.idadePickerValues = jsonResult
+                
+                print("fez o json")
+                
+            } catch {
+
                 let alert = UIAlertController(title: "Alerta", message: "Erro ao carregar Idades, contate adm.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
+
             }
-            
             
         } else {
             
@@ -308,36 +293,28 @@ class ManterLoteVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     func carregarArrayFazendas () {
         if NetworkHelper.isConnectedToNetwork() {
             
-            var usuario: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("usuario")
+            let usuario: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey("usuario");
             
-            var json = JSONHelper.JSONStringify(usuario!, prettyPrinted: true)
+            let json = JSON(usuario!);
             
-            let url = NSURL(string: Configuracao.getWSURL() + "/fazendasOfUser")
+            let url = NSURL(string: Configuracao.getWSURL() + "/fazendasOfUser");
             let request = NSMutableURLRequest(URL:url!);
             
             request.HTTPMethod = "POST";
-            request.HTTPBody = json.dataUsingEncoding(NSUTF8StringEncoding);
+            request.HTTPBody = try! json.rawData();
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type");
             
             var response : NSURLResponse?
             
-            if let httpResponse = response as? NSHTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    
-                    do  {
-                        let urlData: NSData = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response);
-                        
-                        let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(urlData, options: .AllowFragments) as! NSArray
-                        
-                        self.fazendaPickerValues = jsonResult
-                        
-                        print("fez o json")
-                        
-                    } catch {
-                        print("Erro na conversao do JSON")
-                    }
-                }
-            } else {
+            do  {
+                let urlData: NSData = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response);
+                
+                let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(urlData, options: .AllowFragments) as! NSArray
+                
+                self.fazendaPickerValues = jsonResult
+                
+            } catch {
+                print("Erro na conversao do JSON")
                 let alert = UIAlertController(title: "Alerta", message: "Erro ao carregar Fazendas, contate adm.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
@@ -345,7 +322,7 @@ class ManterLoteVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             
         } else {
             
-            var alert = UIAlertController(title: "Alerta", message: "Sem conexão com a internet, tente mais tarde!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Alerta", message: "Sem conexão com a internet, tente mais tarde!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }

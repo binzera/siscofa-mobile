@@ -10,7 +10,7 @@ import UIKit
 
 class SiscofaHomeVC: UIViewController, UITableViewDelegate {
     
-    var menu = ["Cadastrar Fazenda", "Cadastrar Lote", "Cadastrar Movimentação", "Cadastrar Tipo Movimentação", "Cadastrar Raça", "Cadastrar Idade"];
+    var menu = ["Cadastrar Fazenda", "Cadastrar Lote", "Cadastrar Movimentação", "Cadastrar Raça"];
     
     override func viewDidLoad() {
         
@@ -35,7 +35,9 @@ class SiscofaHomeVC: UIViewController, UITableViewDelegate {
             
             case 1: performSegueWithIdentifier("sg_cadastro_lote", sender: nil)
             
-            case 4: performSegueWithIdentifier("sg_cadastro_raca", sender: nil)
+            case 2: performSegueWithIdentifier("sg_cadastro_movimentacao", sender: nil)
+            
+            case 3: performSegueWithIdentifier("sg_cadastro_raca", sender: nil)
             
             default: print(indexPath.row)
         }

@@ -13,7 +13,7 @@ class LoginVC: UIViewController {
     
     @IBOutlet var tfUser: UITextField!
     @IBOutlet var tfSenha: UITextField!
-
+    
     
     
     @IBAction func logar(sender: AnyObject) {
@@ -31,16 +31,16 @@ class LoginVC: UIViewController {
         
         if NetworkHelper.isConnectedToNetwork() {
             
-            let usuario = [ "usuario": tfUser.text,
-                "senha": tfSenha.text] as! AnyObject
+            let usuario = ["usuario" : tfUser.text!,
+                "senha" : tfSenha.text!]
             
-            let json = JSONHelper.JSONStringify(usuario, prettyPrinted: false)
+            let json = JSON(usuario)
             
             let url = NSURL(string: Configuracao.getWSURL() + "/logar")
             let request = NSMutableURLRequest(URL:url!);
             
             request.HTTPMethod = "POST";
-            request.HTTPBody = json.dataUsingEncoding(NSUTF8StringEncoding);
+            request.HTTPBody = try! json.rawData()
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type");
             
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
@@ -57,7 +57,7 @@ class LoginVC: UIViewController {
                 dispatch_async(dispatch_get_main_queue()) {
                     
                     do  {
-                         let jsonResult: Dictionary<String,AnyObject> = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! Dictionary<String,AnyObject>
+                        let jsonResult: Dictionary<String,AnyObject> = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! Dictionary<String,AnyObject>
                         
                         NSUserDefaults.standardUserDefaults().setObject(jsonResult, forKey: "usuario")
                         self.performSegueWithIdentifier("tabBarHome", sender: nil)
@@ -68,24 +68,24 @@ class LoginVC: UIViewController {
                         let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
                         
                         switch responseString as! String {
-
-                            case "USER_NAO_CADASTRADO":
-                                alert.message = "Usuário não cadastrado"
-                                self.presentViewController(alert, animated: true, completion: nil)
                             
-                            case "SENHA_INCORRETA":
-                                //Criei outra forma de alert para testar a diferenca entre elas
-                                let alerta = UIAlertController(title: "Alerta", message: "Senha nao confere.", preferredStyle: UIAlertControllerStyle.Alert)
-                                alerta.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-                                    self.dismissViewControllerAnimated(true, completion: nil)
-                                }))
+                        case "USER_NAO_CADASTRADO":
+                            alert.message = "Usuário não cadastrado"
+                            self.presentViewController(alert, animated: true, completion: nil)
                             
-                                self.presentViewController(alerta, animated: true, completion: nil)
+                        case "SENHA_INCORRETA":
+                            //Criei outra forma de alert para testar a diferenca entre elas
+                            let alerta = UIAlertController(title: "Alerta", message: "Senha nao confere.", preferredStyle: UIAlertControllerStyle.Alert)
+                            alerta.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                            }))
                             
-                            default:
-                                alert.message = "O Servidor retornou algo inesperado, contate o administrador"
-                                self.presentViewController(alert, animated: true, completion: nil)
-                                print("Nao sei o que aconteceu, o retorno foi:  \(responseString)")
+                            self.presentViewController(alerta, animated: true, completion: nil)
+                            
+                        default:
+                            alert.message = "O Servidor retornou algo inesperado, contate o administrador"
+                            self.presentViewController(alert, animated: true, completion: nil)
+                            print("Nao sei o que aconteceu, o retorno foi:  \(responseString)")
                             
                         }
                     }
@@ -107,11 +107,11 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        
     }
     
     override func viewDidAppear(animated: Bool) {
-       
+        
     }
     
     override func didReceiveMemoryWarning() {

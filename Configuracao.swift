@@ -14,4 +14,5 @@ class Configuracao {
         return "http://localhost:8080/wsvaleuboi/rest"
     }
     
+    
 }

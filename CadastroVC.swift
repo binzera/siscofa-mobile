@@ -9,18 +9,18 @@
 import UIKit
 
 class CadastroVC: UIViewController, UIAlertViewDelegate {
-
+    
     @IBOutlet var lbNome: UITextField!
     @IBOutlet var lbEmail: UITextField!
     @IBOutlet var lbUser: UITextField!
     @IBOutlet var lbSenha: UITextField!
-
+    
     
     @IBAction func cadastrarUsuario(sender: AnyObject) {
         let usuario = ["nome" : lbNome.text,
-                    "email" : lbEmail.text,
-                    "usuario": lbUser.text,
-                    "senha": lbSenha.text]
+            "email" : lbEmail.text,
+            "usuario": lbUser.text,
+            "senha": lbSenha.text]
         
         let json = JSONHelper.JSONStringify(usuario as! AnyObject, prettyPrinted: false);
         
@@ -56,34 +56,34 @@ class CadastroVC: UIViewController, UIAlertViewDelegate {
             
             dispatch_async(dispatch_get_main_queue()) {
                 switch responseString as! String {
-                    case "USUARIO_JA_CADASTRADO":
-                        alert.message = "Usuário já existe!"
-                        alert.addAction(UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
+                case "USUARIO_JA_CADASTRADO":
+                    alert.message = "Usuário já existe!"
+                    alert.addAction(UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
                     
                     
-                    case "ERRO_CADASTRO":
-                        alert.message = "Erro no cadastro, contate o administrador!"
-                        alert.addAction(UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
+                case "ERRO_CADASTRO":
+                    alert.message = "Erro no cadastro, contate o administrador!"
+                    alert.addAction(UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
                     
-                    case "[{\"property\":\"email\",\"message\":\"Email Invalido\"}]":
-                        alert.message = "Email Inválido"
-                        alert.addAction(UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
+                case "[{\"property\":\"email\",\"message\":\"Email Invalido\"}]":
+                    alert.message = "Email Inválido"
+                    alert.addAction(UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
                     
-                    case "USUARIO_CADASTRADO_SUCESSO":
-                        alert.addAction(okAction)
-                        self.presentViewController(alert, animated: true, completion: nil)
-                    default:
-                        print("Nao sei o que aconteceu, o retorno foi:  \(responseString)")
+                case "USUARIO_CADASTRADO_SUCESSO":
+                    alert.addAction(okAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                default:
+                    print("Nao sei o que aconteceu, o retorno foi:  \(responseString)")
                 }
                 
             }
         }
         
         task.resume()
-        
+         
     }
     
     override func viewDidLoad() {

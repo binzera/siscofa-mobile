@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -232,7 +233,7 @@
             </objects>
             <point key="canvasLocation" x="-1101.5" y="895.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Relatorios-->
         <scene sceneID="FSe-2O-u2g">
             <objects>
                 <viewController id="GfI-La-bFk" sceneMemberID="viewController">
@@ -245,14 +246,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="history" id="I6u-I0-g2S"/>
+                    <tabBarItem key="tabBarItem" title="Relatorios" image="report-3-32.ico" id="I6u-I0-g2S"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1LJ-eN-8rA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="222.5" y="1242.5"/>
         </scene>
-        <!--Siscofa HomeVC-->
+        <!--Cadastro-->
         <scene sceneID="MaZ-tV-cdU">
             <objects>
                 <viewController id="fCl-II-zSW" customClass="SiscofaHomeVC" customModule="SiscofaMobile" customModuleProvider="target" sceneMemberID="viewController">
@@ -270,13 +271,15 @@
                                     <navigationItem title="Siscofa Home" id="Vd3-oF-OuZ"/>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rYg-F3-lzp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rYg-F3-lzp">
                                 <rect key="frame" x="0.0" y="64" width="375" height="509"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="100" reuseIdentifier="myCell" rowHeight="50" id="f5I-Ba-R9A">
+                                        <rect key="frame" x="0.0" y="22" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f5I-Ba-R9A" id="QVM-tf-kJm">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -292,7 +295,11 @@
                             <constraint firstItem="rYg-F3-lzp" firstAttribute="top" secondItem="wgF-pi-CVE" secondAttribute="bottom" id="JuQ-Tl-yRF"/>
                             <constraint firstItem="wgF-pi-CVE" firstAttribute="top" secondItem="yHl-cZ-yQg" secondAttribute="bottom" id="Nfi-MF-Rne"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wgF-pi-CVE" secondAttribute="trailing" constant="-16" id="R9i-CN-iFl"/>
+                            <constraint firstItem="rYg-F3-lzp" firstAttribute="leading" secondItem="wgF-pi-CVE" secondAttribute="leading" id="YP9-VB-1MZ"/>
+                            <constraint firstItem="rYg-F3-lzp" firstAttribute="top" secondItem="wgF-pi-CVE" secondAttribute="bottom" id="fNW-cC-5FU"/>
                             <constraint firstItem="wgF-pi-CVE" firstAttribute="leading" secondItem="2jT-Mr-amk" secondAttribute="leadingMargin" constant="-16" id="hRW-ds-gzY"/>
+                            <constraint firstItem="rYg-F3-lzp" firstAttribute="trailing" secondItem="wgF-pi-CVE" secondAttribute="trailing" id="k01-Iv-wZn"/>
+                            <constraint firstItem="IEq-7X-xr3" firstAttribute="top" secondItem="rYg-F3-lzp" secondAttribute="bottom" constant="94" id="vJR-Ow-XYe"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -300,17 +307,18 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" systemItem="recents" id="v0F-F8-C7y"/>
+                    <tabBarItem key="tabBarItem" title="Cadastro" image="register.png" id="v0F-F8-C7y"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="BzH-qB-SWQ" kind="show" identifier="sg_cadastro_fazenda" id="psc-Bv-Ybi"/>
                         <segue destination="fWX-CV-GLh" kind="show" identifier="sg_cadastro_raca" id="U8r-p8-MhA"/>
                         <segue destination="ULK-DC-Q10" kind="show" identifier="sg_cadastro_lote" id="fEZ-Qd-Mrk"/>
+                        <segue destination="j3R-SJ-ydj" kind="show" identifier="sg_cadastro_movimentacao" id="IyY-lV-ZId"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qly-kk-1g6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222.5" y="-330.5"/>
+            <point key="canvasLocation" x="266.5" y="-310.5"/>
         </scene>
         <!--Manter RacaVC-->
         <scene sceneID="4LG-9g-gWM">
@@ -361,9 +369,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celula" id="i9U-8G-iNW">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="367" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i9U-8G-iNW" id="I8f-6u-hmA">
+                                            <rect key="frame" x="0.0" y="0.0" width="367" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -386,7 +395,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BX3-4j-agw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1080.5" y="-131.5"/>
+            <point key="canvasLocation" x="1043.5" y="-395.5"/>
+        </scene>
+        <!--Manter MovimentacaoVC-->
+        <scene sceneID="NJ1-Am-HGC">
+            <objects>
+                <viewController id="j3R-SJ-ydj" customClass="ManterMovimentacaoVC" customModule="SiscofaMobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rk0-Re-OBX"/>
+                        <viewControllerLayoutGuide type="bottom" id="aCQ-RF-xQ8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="reQ-eS-n8A">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8L7-24-Kij">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Movimentações" id="h3U-ci-Kl6">
+                                        <barButtonItem key="leftBarButtonItem" title="Voltar" id="ImY-wM-RxC"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DP7-aX-v1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1116.5" y="476.5"/>
         </scene>
         <!--Manter LoteVC-->
         <scene sceneID="Iqm-tK-dni">
@@ -404,7 +442,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Cadastro Lotes" id="0GN-JR-JcY">
-                                        <barButtonItem key="leftBarButtonItem" title="Voltar" id="VKY-Iv-y2M"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Voltar" id="VKY-Iv-y2M">
+                                            <connections>
+                                                <segue destination="NJM-f4-84k" kind="show" id="erD-Qd-JEJ"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Salvar" id="g7t-0m-WJf">
                                             <connections>
                                                 <action selector="salvar:" destination="ULK-DC-Q10" id="b6x-4I-zX8"/>
@@ -504,12 +546,11 @@
                         <outlet property="tfArrobas" destination="li4-mo-ltD" id="OWz-oi-YMc"/>
                         <outlet property="tfFazenda" destination="8Ig-Ny-HWd" id="Ok9-yO-kHy"/>
                         <outlet property="tfQuantidade" destination="e3x-xo-ZAr" id="PUK-Um-GWg"/>
-                        <segue destination="NJM-f4-84k" kind="show" identifier="sg_voltar_home" id="c6c-md-Wsm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqs-NC-fSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094.5" y="724.5"/>
+            <point key="canvasLocation" x="962.5" y="1352.5"/>
         </scene>
         <!--Manter FazendaVC-->
         <scene sceneID="UK5-Rx-LgQ">
@@ -577,7 +618,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tFe-cV-s8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1069.5" y="-1155.5"/>
+            <point key="canvasLocation" x="1043.5" y="-1279.5"/>
         </scene>
         <!--Tab Bar Home Controller-->
         <scene sceneID="uun-dr-nUd">
@@ -621,7 +662,11 @@
             <point key="canvasLocation" x="-540" y="1493"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="register.png" width="24" height="24"/>
+        <image name="report-3-32.ico" width="32" height="32"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c6c-md-Wsm"/>
+        <segue reference="UIy-ZX-kqX"/>
     </inferredMetricsTieBreakers>
 </document>

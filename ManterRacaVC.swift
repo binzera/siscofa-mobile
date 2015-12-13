@@ -9,7 +9,7 @@
 import UIKit
 
 class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet var lbRaca: UITextField!
     @IBOutlet var tableRacas: UITableView!
     
@@ -17,18 +17,18 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func btSalvar(sender: AnyObject) {
         
-        let raca = ["nome" : self.lbRaca.text] as! AnyObject;
+        let raca = ["nome" : self.lbRaca.text!];
         
-        var alert = UIAlertController(title: "Alerta", message: "Raca cadastrada com sucesso", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Alerta", message: "Raca cadastrada com sucesso", preferredStyle: UIAlertControllerStyle.Alert)
         
-        var voltarAction = UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil)
+        let voltarAction = UIAlertAction(title: "voltar", style: UIAlertActionStyle.Default, handler: nil)
         
-        var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
             UIAlertAction in
             NSLog("OK Pressed")
             self.performSegueWithIdentifier("sg_voltar_home", sender: nil)
         }
-
+        
         
         if(self.lbRaca.text == ""){
             alert.message = "Os campo raça deve ser preenchido"
@@ -40,7 +40,7 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         if NetworkHelper.isConnectedToNetwork() {
             
-            var json = JSONHelper.JSONStringify(raca, prettyPrinted: false);
+            let json = JSONHelper.JSONStringify(raca, prettyPrinted: false);
             
             let myUrl = NSURL(string: Configuracao.getWSURL() + "/inserirRaca");
             
@@ -92,27 +92,28 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             
             
         } else {
-            var alert = UIAlertController(title: "Alerta", message: "Sem conexão com a internet, tente mais tarde!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Alerta", message: "Sem conexão com a internet, tente mais tarde!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("Vai Aparecer")
         self.tableRacas.registerClass(UITableViewCell.self, forCellReuseIdentifier: "celula")
         self.tableRacas.dataSource = self
     }
+    override func viewDidAppear(animated: Bool) {
+        self.tableRacas.reloadData()
+    }
     
-
-        
+    
     override func viewDidLoad() {
         print("Iniciou o load")
         
         if NetworkHelper.isConnectedToNetwork() {
             
             let myUrl = NSURL(string: Configuracao.getWSURL() + "/racas");
-
+            
             let task = NSURLSession.sharedSession().dataTaskWithURL(myUrl!) {(data, response, error) in
                 print(NSString(data: data!, encoding: NSUTF8StringEncoding))
                 
@@ -123,17 +124,18 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                             let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSArray
                             
                             self.arrayRacas = jsonResult
-                            print("fez o json")
+
                             
                         } catch {
                             print("Erro na conversao do JSON")
                         }
-
+                        
                     }
                 }
             }
             
             task.resume()
+           
             
             
         } else {
@@ -145,28 +147,26 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(self.arrayRacas.count)
         return self.arrayRacas.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "celula")
-        print(self.arrayRacas[indexPath.row]["nome"])
-        cell.textLabel?.text = self.arrayRacas[indexPath.row]["nome"] as! String
+        cell.textLabel?.text = self.arrayRacas[indexPath.row]["nome"] as? String
         
         return cell
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-        //case 0: performSegueWithIdentifier("sg_cadastro_fazenda", sender: nil)
-            
-        //case 4: performSegueWithIdentifier("sg_cadastro_raca", sender: nil)
-            
-        default: print(indexPath.row)
-        }
-    }
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        switch indexPath.row {
+//            //case 0: performSegueWithIdentifier("sg_cadastro_fazenda", sender: nil)
+//            
+//            //case 4: performSegueWithIdentifier("sg_cadastro_raca", sender: nil)
+//            
+//        default: print(indexPath.row)
+//        }
+//    }
     
     
     
@@ -186,7 +186,7 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         var _: NSError
         // throwing an error on the line below (can't figure out where the error message is)
-       // var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+        // var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         //println(jsonResult)
     }
 }

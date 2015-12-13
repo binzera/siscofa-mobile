@@ -144,7 +144,7 @@ class ManterLoteVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
                 "usuario": usuario]
             
             let json = JSONHelper.JSONStringify(lote, prettyPrinted: false);
-            
+            print(json)
             let url = NSURL(string: Configuracao.getWSURL() + "/cadastrarLote")
             let request = NSMutableURLRequest(URL:url!);
             
@@ -271,8 +271,6 @@ class ManterLoteVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
                 
                 self.idadePickerValues = jsonResult
                 
-                print("fez o json")
-                
             } catch {
 
                 let alert = UIAlertController(title: "Alerta", message: "Erro ao carregar Idades, contate adm.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -310,7 +308,7 @@ class ManterLoteVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
                 let urlData: NSData = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response);
                 
                 let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(urlData, options: .AllowFragments) as! NSArray
-                
+
                 self.fazendaPickerValues = jsonResult
                 
             } catch {

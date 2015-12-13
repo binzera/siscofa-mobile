@@ -35,6 +35,7 @@ class LoginVC: UIViewController {
                 "senha" : tfSenha.text!]
             
             let json = JSON(usuario)
+            print(json)
             
             let url = NSURL(string: Configuracao.getWSURL() + "/logar")
             let request = NSMutableURLRequest(URL:url!);

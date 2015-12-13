@@ -62,7 +62,6 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 
                 // Print out response body
                 let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("responseString = \(responseString)")
                 
                 
                 dispatch_async(dispatch_get_main_queue()) {
@@ -108,14 +107,12 @@ class ManterRacaVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     
     override func viewDidLoad() {
-        print("Iniciou o load")
         
         if NetworkHelper.isConnectedToNetwork() {
             
             let myUrl = NSURL(string: Configuracao.getWSURL() + "/racas");
             
             let task = NSURLSession.sharedSession().dataTaskWithURL(myUrl!) {(data, response, error) in
-                print(NSString(data: data!, encoding: NSUTF8StringEncoding))
                 
                 if let httpResponse = response as? NSHTTPURLResponse {
                     if httpResponse.statusCode == 200 {

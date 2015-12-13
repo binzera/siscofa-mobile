@@ -63,7 +63,6 @@ class ManterFazendaVC: UIViewController {
                 
                 // Print out response body
                 let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("responseString = \(responseString)")
                 
                 
                 dispatch_async(dispatch_get_main_queue()) {
